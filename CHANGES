@@ -1,0 +1,269 @@
+#
+# $Id: CHANGES,v 1.125 2014/07/10 06:55:38 evertonm Exp $
+#
+
+WishList
+========
+- Establish TCP connections asynchronously.
+- Send/receive TCP greetings asynchronously.
+- Run server as daemon.
+- Clean-up the greetings parser into a table.
+
+0.54
+====
++ Printf format fixes.
++ Fixed linking.
+
+0.53
+====
++ Fixed interface name lookup for -j switch (nepim -j 239.1.1.1@eth0).
+
+0.52
+====
++ Recent Linux distributions benefit from having HAVE_GROUP_SOURCE_REQ
+  defined by default in src/Makefile.
++ Switch -E to enable IP Router Alert option (RFC 2113).
+
+0.51
+====
++ Makefile option HAVE_INET6_S6_ADDR32 to use
+  in6_addr.s6_addr32 API instead of in6_addr.in6_u.u6_addr32.
+
+0.50
+====
++ Specify interface address for multicast join.
+  Examples: nepim -j 239.1.1.1@eth0             ;# by name
+            nepim -j 1.1.1.1+232.1.1.1@10.0.0.1 ;# by address
+            nepim -j 239.1.1.1@1                ;# by index
+            nepim -j ::1+ff01::1111@eth1        ;# by name
+            nepim -j ::1+ff01::1111@2           ;# by index
+
+0.49
+====
++ Try to join every SSM source+group combination.
+
+0.48
+====
++ HAVE_IP_MREQ enables multicast compilation under Solaris 10.
+
+0.47
+====
++ Support for Source-Specific Multicast (SSM)
+  + server: nepim -j fe80::1+ff01::1111
+            nepim -j 10.10.10.10+232.1.1.1,2000
+  (RFC 4607: SSM for IP)
+  (RFC 3376: IGMPv3)
+
+0.46
+====
++ Options for client-side (-cmss) and server-side (-smss) TCP MSS.
+
+0.45
+====
++ Cosmetic: Partial label 'prt' changed to 'cur'.
+
+0.44
+====
++ Cosmetic clean-up.
++ Compilation fix for Solaris.
+
+0.43
+====
++ IPv6 hint for -Fa option added to brief help under -h.
++ Record min/max rates. -mM enables periodic reporting.
+
+0.42
+====
++ Keepalive timeout message pointing user to -K option.
++ Included -Fap usage example to README.
++ Failure to receive greeting response points user to -g option.
+
+0.41
+====
++ Exclude multicast and zeronet from random IPv4 UDP address (-Fa).
+
+0.40
+====
++ -Fa, -Fp for randomizing UDP destination address, port.
+
+0.39
+====
++ Keepalive options fully moved to client-only control.
+
+0.38
+====
++ Application-layer TCP keepalive timeout can be tuned with -C [interval].
+
+0.37
+====
++ Tip for building with 64-bit Solaris.
+
+0.36
+====
++ Consider full command-line argument as pathname for Unix sockets.
++ Report UDP accumulative packet loss. Supressed with -L.
+
+0.35
+====
++ Removed cosmetic assert()ion.
+
+0.34
+====
++ Report detail about lost TCP connections on client side.
+
+0.33
+====
++ Fixed rounding error in "-e" command line option.
++ Minor compilation clean-up.
++ Cosmetic.
+
+0.32
+====
++ Support for m,M,k,K,g,G suffixes in -r, -R, -e.
++ Support for floating point values in -r, -R, -e.
++ Support for time multipliers ([m]onth,[h]our,[d]ay) in -a.
+
+0.31
+====
++ Report detailed error message on setsockopt(IP_TOS) failure.
++ Option (-V) for verbose error messages.
++ Compilation cleanup.
+
+0.30
+====
++ Friendlier compilation under Solaris.
++ Compiler warnings.
+
+0.29
+====
++ Compiler warnings fixes for OpenBSD.
+
+0.28
+====
++ Option (-sweep) to sweep write sizes across a range.
+
+0.27
+====
++ Cosmetic.
+
+0.26
+====
++ Option (-e) for send-rate with uniform interval between sends.
+
+0.25
+====
++ Option (-D) to change interval between rate-limited sends.
+
+0.24
+====
++ Report TCP MSS.
++ Client mode can bind (-b) to specific local address.
+
+0.23
+====
++ SIGINT handler issuing average statistics.
++ Reporting UDP packet loss stats.
++ Broken UDP compatibility with previous versions.
+
+0.22
+====
++ Fixed TCP_NODELAY support's awareness of PF_UNIX sockets.
++ Option (-o) to specify an arbitrary per-packet protocol overhead.
+
+0.21
+====
++ Option (-A) to change socket keepalive option (SO_KEEPALIVE).
++ Option (-C) for application-level TCP keepalives.
++ Option (-N) to select nagle mode (socket TCP_NODELAY).
+
+0.20
+====
++ Option (-K) to specify non-default timeouts for keepalives.
+
+0.19
+====
++ UNIX-domain STREAM sockets.
++ Option (-q) to hide soft read/write errors.
++ Option (-y) for ip tos.
+
+0.18
+====
++ Option (-F) to force sending out UDP packets in
+  client mode regardless of server replies.
+
+0.17
+====
++ Option for maximum of UDP greeting retries (-g).
++ Applied Ron Maeder patch:
+  . Option for payload fill byte (-P).
+  . Option for random payload data (-S is the seed).
+  . Option for pausing some seconds before data transfer (-X).
+  . Fixed bug which prevented stats report from being
+    written when redirected.
+  . Fixed greeting parser which ate part of next packet.
+  . Fixed detection of buffer too small to read greetings.
+
+0.16
+====
++ Makefile fixes for BSDs.
++ GNU GPL licensing updated to latest 2.1.
++ Portability fix: initialization of getaddrinfo's hints.
+
+0.15
+====
++ tcpd (TCP Wrapper) access control facility.
+
+0.14
+====
++ Experimental UDP segment loss and duplication.
++ Simple password authentication.
++ Better detection of remotely closed TCP connections.
++ Cosmetic changes.
+
+0.13
+====
++ Fix multicast support: can't send keepalives from mcast socket.
++ Fix multicast support: can't reply (greetings) from mcast socket.
++ Command-line switch -M to enable client multicast-compatible options.
++ Command-line switch -4 to disable IPv4 support.
+
+0.12
+====
++ Command-line options for maximum socket buffer sizes.
++ Fixed calculation of minimum packet rate limit.
++ FreeBSD port.
+
+0.11
+====
++ Spawn one TCP client against multiple TCP servers.
++ Spawn one UDP client against multiple UDP servers
++ Control packet/send/write/syscall rate.
+
+0.10
+====
++ Basic support for UDP measurements.
+
+0.9
+===
++ Command-line option for listen(2) backlog.
++ Linux path MTU discovery.
++ Several minor changes.
+
+0.8
+===
++ Ignore SIGPIPE in favor of EPIPE.
+
+0.7
+===
++ Cosmetic clean-ups.
+
+0.6
+===
++ Changed unit of syscalls accounting.
+
+0.5
+===
++ System calls accounting.
++ Solaris port.
++ Several minor clean-ups.
+
