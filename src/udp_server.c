@@ -719,8 +719,8 @@ static void udp_slot_start(int local_slot)
 
 static void *on_udp_slot_start(oop_source *src, struct timeval tv, void *user)
 {
-  uint64_t u = 0xFFFF & (uint64_t) user;
-  int local_slot = u;
+  intptr_t i = 0xFFFF & (intptr_t) user;
+  int local_slot = i;
 
   udp_slot_start(local_slot);
 
@@ -754,7 +754,7 @@ static void schedule_udp_slot_start(int local_slot)
   pause.tv_sec += session->pause_duration;
   nepim_global.oop_src->on_time(nepim_global.oop_src,
 				pause,
-				on_udp_slot_start, (void *) (uint64_t) local_slot);
+				on_udp_slot_start, (void *) (intptr_t) local_slot);
 }
 
 static int parse_greetings(nepim_greet_t *opt,
