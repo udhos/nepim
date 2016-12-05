@@ -24,5 +24,5 @@ MA 02110-1301 USA
 
 const char *nepim_version()
 {
-  return "0.54";
+  return "0.55";
 }
