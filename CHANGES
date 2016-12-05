@@ -9,6 +9,9 @@ WishList
 - Run server as daemon.
 - Clean-up the greetings parser into a table.
 
+0.55
+====
+
 0.54
 ====
 + Printf format fixes.
